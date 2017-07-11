@@ -981,7 +981,7 @@ class ElastAlerter():
             body['@timestamp'] = dt_to_ts(ts_now())
         if self.writeback_es:
             try:
-                res = self.writeback_es.create(index=self.writeback_index,
+                res = self.writeback_es.index(index=self.writeback_index,
                                                doc_type=doc_type, body=body)
                 return res
             except ElasticsearchException as e:
